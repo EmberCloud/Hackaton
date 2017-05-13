@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar color='navbar'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>User profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="background">
+
+<div class="card">
+  <h6>Change password</h6>
+	<ion-item>
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>New password</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Again</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <button  class="has-margin" ion-button full>Change</button>
+</div>
+<div class="card">
+  <h6>Anthropometry</h6>
+  <ion-item>
+    <ion-label stacked>Age</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Weight</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  </div>
+
+<div class="card">
+  <h6>Preferences</h6>
+  <ion-grid>
+   <ion-row>
+     <ion-col col-6>
+       <ion-item>
+         <ion-label>Meat</ion-label>
+         <ion-checkbox color="primary_color" checked="true"></ion-checkbox>
+       </ion-item>
+       <ion-item>
+         <ion-label>Fruits</ion-label>
+         <ion-checkbox color="primary_color" checked="false"></ion-checkbox>
+       </ion-item>
+     </ion-col>
+     <ion-col col-6>
+       <ion-item>
+         <ion-label>Vegetables</ion-label>
+         <ion-checkbox color="primary_color" checked="true"></ion-checkbox>
+       </ion-item>
+       <ion-item>
+         <ion-label>Fish</ion-label>
+         <ion-checkbox color="primary_color" checked="true"></ion-checkbox>
+       </ion-item>
+     </ion-col>
+   </ion-row>
+  </ion-grid>
+</div>
+  <button  class="has-margin" ion-button full>Save</button>
+
+
+</ion-content>

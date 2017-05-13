@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color='navbar'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Recipes</ion-title>
+  </ion-navbar>
+
+  <ion-row>
+    <ion-col col-9>
+      <ion-item class="input-wrapper">
+        <ion-input type="text" [(ngModel)]="search" placeholder="Search..."></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-3>
+      <button ion-button icon-only class="resize">
+        <ion-icon name="funnel" class="button_id"></ion-icon>
+        <ion-select [(ngModel)]="typesHeader" #C (ion-change)="onChange(C.value)">
+          <ion-option *ngFor="let type of types" value="{{type.value}}">{{type.value}}</ion-option>
+        </ion-select>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="recipeModel" #F (ion-change)="OnChanges(F.value)">
+      <ion-segment-button value="All" no-border-bottom>
+        All
+      </ion-segment-button>
+      <ion-segment-button value="Breakfast" no-border-bottom>
+        Breakfast
+      </ion-segment-button>
+      <ion-segment-button value="Dinner" no-border-bottom>
+        Dinner
+      </ion-segment-button>
+      <ion-segment-button value="Supper" no-border-bottom>
+        Supper
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="typeSelected()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+  <ion-card  *ngFor="let recipe of recipes" class="has-margin">
+    <h6>
+      {{recipe.name}}
+    </h6>
+    <img src="assets/images/{{recipe.imageUrl}}" class="recipe-img">
+    <ion-card-content>
+      {{recipe.shortDescription}}
+    </ion-card-content>
+    <button ion-button color="primary" clear item-left #B (click)="showFullRecept(recipe._id)">Read Full</button>
+  </ion-card>
+
+</ion-content>
+

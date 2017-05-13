@@ -1,0 +1,31 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>xRation</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="openProfileContainer">
+
+    <button menuClose (click)="openProfile()" id="openProfileButton">
+        <ion-item class="sidemenu-header" id="openProfileInner">
+        <ion-thumbnail item-left>
+          <img src="assets/images/redhair.jpg" id="avatar"> 
+        </ion-thumbnail>
+        <h2>{{nickname}}</h2>
+        <p>Current Status<p>
+      </ion-item>
+    </button>
+
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+        <ion-icon name="arrow-right"></ion-icon>
+      </button>
+    </ion-list>
+</ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

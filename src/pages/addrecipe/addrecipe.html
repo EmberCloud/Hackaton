@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color='navbar'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add recipe</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="background">
+  <div class="card">
+    <h6>Information</h6>
+    <ion-item>
+      <ion-label floating>Dishes name</ion-label>
+      <ion-input type="text" [(ngModel)]="DishesName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="Description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Recipe</ion-label>
+      <ion-input type="text" [(ngModel)]="Recipe"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Url photo</ion-label>
+      <ion-input type="text" [(ngModel)]="UrlPhoto"></ion-input>
+    </ion-item>
+  </div>
+
+  <button ion-button icon-only class="resize">
+        <ion-icon name="funnel" class="button_id"></ion-icon>
+        <ion-select [(ngModel)]="typesHeader" #C (ion-change)="onChange(C.value)">
+          <ion-option *ngFor="let type of types" value="{{type.value}}">{{type.value}}</ion-option>
+        </ion-select>
+  </button>
+  
+  <div class="card">
+    <h6>Nutrients</h6>
+    <ion-item>
+      <ion-label floating>Proteins</ion-label>
+      <ion-input type="text" [(ngModel)]="Proteins"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Carbohydrates</ion-label>
+      <ion-input type="text" [(ngModel)]="Carbohydrates"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Fats</ion-label>
+      <ion-input type="text" [(ngModel)]="Fats"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Calories</ion-label>
+      <ion-input type="text" [(ngModel)]="Calories"></ion-input>
+    </ion-item>
+  </div>
+  <div class="card">
+    <h6>Exceptions</h6>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>Meat</ion-label>
+          <ion-checkbox color="primary_color" checked="true" [(ngModel)]="Meat"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Milk</ion-label>
+          <ion-checkbox color="primary_color" checked="true" [(ngModel)]="Milk"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label>Sugar</ion-label>
+          <ion-checkbox color="primary_color" checked="true" [(ngModel)]="Sugar"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
+  <button class="has-margin" ion-button full (click)="addDish()">Add</button>
+
+
+</ion-content>
