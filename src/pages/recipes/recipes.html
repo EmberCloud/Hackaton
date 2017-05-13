@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color='navbar'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Recipes</ion-title>
+  </ion-navbar>
+
+  <ion-row>
+    <ion-col col-9>
+      <ion-item class="input-wrapper">
+        <ion-input type="text" [(ngModel)]="search" placeholder="Search..."></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-3>
+      <button ion-button icon-only class="resize">
+        <ion-icon name="funnel" class="button_id"></ion-icon>
+        <ion-select [(ngModel)]="typesHeader">
+          <ion-option *ngFor="let type of types" value="{{type.value}}">{{type.value}}</ion-option>
+        </ion-select>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="recipeModel">
+      <ion-segment-button value="" no-border-bottom>
+        Breakfast
+      </ion-segment-button>
+      <ion-segment-button value="" no-border-bottom>
+        Dinner
+      </ion-segment-button>
+      <ion-segment-button value="" no-border-bottom>
+        Supper
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="typeSelected()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+  <ion-card class="has-margin">
+    <img src="assets/images/food.jpg" class="recipe-img">
+    <ion-card-header>
+      Cake
+    </ion-card-header>
+    <ion-card-content>
+      Recept here. Ingredient#0. Ingredient#1. Ingredient#2 but not like a previous ingredients.
+    </ion-card-content>
+    <button ion-button color="primary" clear item-left (click)="showFullRecept()">Read Full</button>
+  </ion-card>
+
+  <ion-card class="has-margin">
+    <img src="assets/images/food.jpg">
+    <ion-card-header>
+      Soup
+    </ion-card-header>
+    <ion-card-content>
+      Recept here. Just imagine soup. Is it tasty? Luuuuuuuuuuuul.
+    </ion-card-content>
+    <button ion-button color="primary" clear item-left (click)="showFullRecept()">Read Full</button>
+  </ion-card>
+
+
+</ion-content>
+

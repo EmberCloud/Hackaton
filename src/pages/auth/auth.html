@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color='navbar'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>xRation</ion-title>
+  </ion-navbar>
+
+ <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="authModel">
+      <ion-segment-button value="LogIn" no-border-bottom>
+        Log-In
+      </ion-segment-button>
+      <ion-segment-button value="SignUp" no-border-bottom>
+        Sign-Up
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="margin">
+  <div [ngSwitch]="authModel">  
+    <ion-list *ngSwitchCase="'LogIn'">
+      <ion-item>
+        <span class="error">{{errorText}}</span>
+        <ion-label fixed>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <button class="has-margin" ion-button full (click)="loginUser()">Log-In</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'SignUp'">
+      <ion-item>
+        <span class="error">{{errorText}}</span>
+        <ion-label fixed>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <button class="has-margin" ion-button full (click)="signupUser()">Sign-Up</button>
+    </ion-list>
+  </div>
+</ion-content>
+
+<!--
+ 
+ 
+-->
