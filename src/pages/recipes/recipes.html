@@ -16,7 +16,7 @@
     <ion-col col-3>
       <button ion-button icon-only class="resize">
         <ion-icon name="funnel" class="button_id"></ion-icon>
-        <ion-select [(ngModel)]="typesHeader">
+        <ion-select [(ngModel)]="typesHeader" #C (ion-change)="onChange(C.value)">
           <ion-option *ngFor="let type of types" value="{{type.value}}">{{type.value}}</ion-option>
         </ion-select>
       </button>
@@ -24,13 +24,16 @@
   </ion-row>
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="recipeModel">
-      <ion-segment-button value="" no-border-bottom>
+      <ion-segment-button value="All" no-border-bottom>
+        All
+      </ion-segment-button>
+      <ion-segment-button value="Breakfast" no-border-bottom>
         Breakfast
       </ion-segment-button>
-      <ion-segment-button value="" no-border-bottom>
+      <ion-segment-button value="Dinner" no-border-bottom>
         Dinner
       </ion-segment-button>
-      <ion-segment-button value="" no-border-bottom>
+      <ion-segment-button value="Supper" no-border-bottom>
         Supper
       </ion-segment-button>
     </ion-segment>
@@ -47,28 +50,16 @@
   </ion-fab>
 
 
-  <ion-card class="has-margin">
-    <img src="assets/images/food.jpg" class="recipe-img">
+  <ion-card  *ngFor="let recipe of recipes" class="has-margin">
+    <img src="assets/images/{{recipe.imageUrl}}" class="recipe-img">
     <ion-card-header>
-      Cake
+      {{recipe.name}}
     </ion-card-header>
     <ion-card-content>
-      Recept here. Ingredient#0. Ingredient#1. Ingredient#2 but not like a previous ingredients.
+      {{recipe.shortDescription}}
     </ion-card-content>
-    <button ion-button color="primary" clear item-left (click)="showFullRecept()">Read Full</button>
+    <button ion-button color="primary" clear item-left (click)="showFullRecept()" recipeId='{{recipe._id}}'>Read Full</button>
   </ion-card>
-
-  <ion-card class="has-margin">
-    <img src="assets/images/food.jpg">
-    <ion-card-header>
-      Soup
-    </ion-card-header>
-    <ion-card-content>
-      Recept here. Just imagine soup. Is it tasty? Luuuuuuuuuuuul.
-    </ion-card-content>
-    <button ion-button color="primary" clear item-left (click)="showFullRecept()">Read Full</button>
-  </ion-card>
-
 
 </ion-content>
 
