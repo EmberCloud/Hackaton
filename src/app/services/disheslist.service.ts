@@ -6,14 +6,13 @@ import {Observable} from 'rxjs/Rx'
 @Injectable()
 export class DishesListService {
   api_url: string = '';
+  recipeId: String='';
 
   constructor(private http: Http) {
   }
 
-  disheslist(): Observable<any> {
-    let url = 'http://localhost:3000/api/dish/posts/1';
-    let head = new Headers({'Content-Type': 'application/json'});
-    return this.http.get(url)
+  disheslist(_url): Observable<any> {
+    return this.http.get(_url)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server Error'));
 

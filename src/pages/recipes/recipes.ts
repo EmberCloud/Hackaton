@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Addrecipe} from "../addrecipe/addrecipe";
 import {DishesListService} from '../../app/services/disheslist.service';
+import {Fullrecipe} from "../fullrecipe/fullrecipe";
 
 
 @Component({
@@ -12,9 +13,9 @@ export class RecipesPage implements OnInit {
 
   search: String = "";
 
-  recepties = {};
+  recipes = []  ;
   foodInTake: String = "";
-  url: String = "";
+  period: String = "";
 
   types = [
     {value: "All"},
@@ -29,19 +30,21 @@ export class RecipesPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getdisheslist();
+    this.getdisheslist("All", "All");
   }
 
 
   showFullRecept(): void {
+    this.disheslistService.recipeId;
     console.log("Display full recept.");
+    this.navCtrl.push(Fullrecipe);
   }
 
-  getdisheslist() {
-    this.disheslistService.disheslist()
+  getdisheslist(filter: String, period: String) {
+    this.disheslistService.disheslist('http://localhost:3000/api/dishes/filter/' + filter + '/period/' + period + '/posts/1')
       .subscribe(
         data => {
-          this.recepties = JSON.parse(data);
+          this.recipes = JSON.parse(data);
           console.log("data");
           console.log(data);
         },
@@ -51,9 +54,16 @@ export class RecipesPage implements OnInit {
 
   }
 
+  OnChanges(value)
+  {
+    this.period = value;
+    this.getdisheslist(this.foodInTake, this.period);
+  }
+
   onChange(value)
   {
     this.foodInTake = value;
+    this.getdisheslist(this.foodInTake, this.period);
   }
 
   likeDish(): void {

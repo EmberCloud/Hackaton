@@ -21,6 +21,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {Fullrecipe} from "../pages/fullrecipe/fullrecipe";
+import {DishesListService} from "./services/disheslist.service";
+import {FullRecipeService} from "./services/fullrecipe.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     PageHeader,
     UserprofilePage,
-    Addrecipe
+    Addrecipe,
+    Fullrecipe
   ],
   imports: [
     BrowserModule,
@@ -50,10 +54,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     PageHeader,
     UserprofilePage,
-    Addrecipe
+    Addrecipe,
+    Fullrecipe
   ],
   providers: [
     AuthService,
+    DishesListService,
+    FullRecipeService,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler }

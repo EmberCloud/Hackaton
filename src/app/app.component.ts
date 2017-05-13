@@ -10,11 +10,6 @@ import { FaqPage } from '../pages/faq/faq';
 import { ProfilePage } from '../pages/profile/profile';
 import { UserprofilePage } from '../pages/userprofile/userprofile';
 
-
-
-
-
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -27,7 +22,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation

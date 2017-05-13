@@ -23,7 +23,7 @@
     </ion-col>
   </ion-row>
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="recipeModel">
+    <ion-segment [(ngModel)]="recipeModel" #F (ion-change)="OnChanges(F.value)">
       <ion-segment-button value="All" no-border-bottom>
         All
       </ion-segment-button>
@@ -51,14 +51,14 @@
 
 
   <ion-card  *ngFor="let recipe of recipes" class="has-margin">
-    <img src="assets/images/{{recipe.imageUrl}}" class="recipe-img">
-    <ion-card-header>
+    <h6>
       {{recipe.name}}
-    </ion-card-header>
+    </h6>
+    <img src="assets/images/{{recipe.imageUrl}}" class="recipe-img">
     <ion-card-content>
       {{recipe.shortDescription}}
     </ion-card-content>
-    <button ion-button color="primary" clear item-left (click)="showFullRecept()" recipeId='{{recipe._id}}'>Read Full</button>
+    <button ion-button color="primary" clear item-left #B (click)="showFullRecept(recipe._id)">Read Full</button>
   </ion-card>
 
 </ion-content>
