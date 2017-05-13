@@ -16,16 +16,13 @@ export class Fullrecipe implements OnInit{
   fullrecipe;
   id;
 
-  // ngOnInit(): void {
-  //   this.getfullrecipe();
-  // }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fullrecipeService: FullRecipeService, private disheslistService: DishesListService) {
   }
 
 
   getfullrecipe(recipeId: String) {
-    this.fullrecipeService.getfullrecipe('http://localhost:3000/api/dishes/id/' + this.fullrecipe.id)
+    this.fullrecipeService.getfullrecipe('http://localhost:3000/api/dishes/id/' + this.id)
       .subscribe(
         data => {
           this.fullrecipe = JSON.parse(data);

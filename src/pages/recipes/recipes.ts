@@ -34,8 +34,8 @@ export class RecipesPage implements OnInit {
   }
 
 
-  showFullRecept(): void {
-    this.disheslistService.recipeId;
+  showFullRecept(_id: String): void {
+    this.disheslistService.recipeId = _id;
     console.log("Display full recept.");
     this.navCtrl.push(Fullrecipe);
   }
