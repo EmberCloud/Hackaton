@@ -24,6 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {Fullrecipe} from "../pages/fullrecipe/fullrecipe";
 import {DishesListService} from "./services/disheslist.service";
 import {FullRecipeService} from "./services/fullrecipe.service";
+import { SharedService } from "./services/sharedService.service";
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {FullRecipeService} from "./services/fullrecipe.service";
     DishesListService,
     DishService,
     FullRecipeService,
+    SharedService,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler }

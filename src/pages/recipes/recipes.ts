@@ -4,6 +4,8 @@ import {Addrecipe} from "../addrecipe/addrecipe";
 import {DishesListService} from '../../app/services/disheslist.service';
 import {Fullrecipe} from "../fullrecipe/fullrecipe";
 
+import { SharedService } from '../../app/services/sharedService.service';
+
 
 @Component({
   selector: 'page-recipes',
@@ -13,7 +15,7 @@ export class RecipesPage implements OnInit {
 
   search: String = "";
 
-  recipes = []  ;
+  recipes = [];
   foodInTake: String = "";
   period: String = "";
 
@@ -34,17 +36,19 @@ export class RecipesPage implements OnInit {
   }
 
 
-  showFullRecept(): void {
-    this.disheslistService.recipeId;
-    console.log("Display full recept.");
-    this.navCtrl.push(Fullrecipe);
+  showFullRecept(_id): void {
+    console.log(_id);
+    this.navCtrl.push(Fullrecipe, {
+      id: _id
+    });
   }
 
   getdisheslist(filter: String, period: String) {
-    this.disheslistService.disheslist('http://localhost:3000/api/dishes/filter/' + filter + '/period/' + period + '/posts/1')
+    this.disheslistService.disheslist('http://localhost:3000/api/dish/filter/' + filter + '/period/' + period + '/posts/1')
       .subscribe(
         data => {
-          this.recipes = JSON.parse(data);
+          //this.recipes = JSON.parse(data);
+          this.recipes = data.msg;
           console.log("data");
           console.log(data);
         },
@@ -58,12 +62,14 @@ export class RecipesPage implements OnInit {
   {
     this.period = value;
     this.getdisheslist(this.foodInTake, this.period);
+    console.log(this.recipes);
   }
 
   onChange(value)
   {
     this.foodInTake = value;
     this.getdisheslist(this.foodInTake, this.period);
+    console.log(this.recipes);
   }
 
   likeDish(): void {

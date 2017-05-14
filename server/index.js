@@ -16,6 +16,7 @@ const User_model = require('./models/user');
 const Auth = require('./routes/auth');
 const Photo = require('./routes/photo');
 const Dish = require('./routes/recipe');
+const Profile = require('./routes/profile');
 
 
 const app = express();
@@ -37,8 +38,9 @@ require('./config/passport')(passport);
 
 
 app.use('/api/auth', Auth); 
-app.use('/photo', Photo);
+app.use('/api/photo', Photo);
 app.use('/api/dish', Dish);
+app.use('/api/profile', Profile);
 
 
 //app.use(favicon(path.join(__dirname, '/views/favicon.ico')));

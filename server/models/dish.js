@@ -18,8 +18,8 @@ let DishSchema = new Schema({
     imageUrl: {
         type: String,
     },
-    constituents: {
-        type: Array,
+    kkal: {
+        type: Number,
         required: true
     },
     exceptions: {

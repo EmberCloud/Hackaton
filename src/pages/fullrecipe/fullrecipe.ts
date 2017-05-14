@@ -5,6 +5,7 @@ import {DishesListService} from '../../app/services/disheslist.service';
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-fullrecipe',
@@ -13,29 +14,44 @@ import {DishesListService} from '../../app/services/disheslist.service';
 
 
 export class Fullrecipe implements OnInit{
-  fullrecipe;
+  // fullrecipe = {
+  //   imageUrl: "http://localhost:3000/photo/brain.jpg"
+  // };
+  fullrecipe = {
+    name: "Name"
+  };
   id;
+  loading:any;
 
-  // ngOnInit(): void {
-  //   this.getfullrecipe();
-  // }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fullrecipeService: FullRecipeService, private disheslistService: DishesListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fullrecipeService: FullRecipeService, private disheslistService: DishesListService,
+  public params: NavParams) {
+    this.id = params.get("id");
+    this.getfullrecipe();
   }
+  
 
-
-  getfullrecipe(recipeId: String) {
-    this.fullrecipeService.getfullrecipe('http://localhost:3000/api/dishes/id/' + this.fullrecipe.id)
+  getfullrecipe() {
+    this.fullrecipeService.getfullrecipe('http://localhost:3000/api/dish/id/' + this.id)
       .subscribe(
         data => {
-          this.fullrecipe = JSON.parse(data);
-          console.log("data");
           console.log(data);
+          //if(!this.fullrecipe['imageUrl']) this.fullrecipe['imageUrl'] = 'http://localhost:3000/photo/brain.jpg';
         },
         err => console.log(err),
-        () => console.log('Gratz!!!')
+        () => {
+          console.log('Gratz!!!');
+          
+        }
       );
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.getfullrecipe();
+  }
+
+  ionViewWillEnter(): void {
+
+  }
+
+
 }

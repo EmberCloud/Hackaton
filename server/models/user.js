@@ -12,6 +12,22 @@ let UserSchema = new Schema({
   password: {
         type: String,
         required: true
+    },
+    height: {
+        type: Number
+    },
+    weight: {
+        type: Number
+    },
+    age: {
+        type: Number
+    },
+    exceptions: {
+        type: Array
+    },
+    favorites: {
+        type: Array,
+        default: []
     }
 });
  
