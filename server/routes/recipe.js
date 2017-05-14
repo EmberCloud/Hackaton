@@ -19,18 +19,19 @@ Router.post('/add', (req, res) => {
         shortDescription: req.body.shortDescription,
         fullDescription: req.body.fullDescription || "",
         imageUrl: req.body.imageUrl || "",
-        constituents: constituents,
+        kkal: +req.body.kkal || 0,
         foodIntake: req.body.foodIntake || "",
-        exceptions: req.body.exceptions || "",
+        exceptions: req.body.exceptions || [],
         rating: 0
     });
 
     newDish.save(function(err) {
         if (err) {
-            console.log(err);
-            return res.json({success: false, msg: 'Username already exists.'});
+            console.log("error!!!!!");
+            res.send({success: false, msg: 'Dish already exists.'});
         }
-        res.json({success: true, msg: 'Successful created new user.'});
+        console.log("Pesnya");
+        res.send({success: true, msg: 'Successful created new dish.'});
     });
 });
 
@@ -76,6 +77,7 @@ Router.get('/filter/:filter/period/:period/posts/:num', (req, res) => {
             findRequest = {};
         }
 
+        console.log(findRequest);
 
         let cursor = collection.find(findRequest)
                                 .skip(pageSize * (req.params.num - 1))
@@ -169,9 +171,13 @@ Router.get('/ranked/down/:id', function(req, res) {
 
 Router.post('/make_ration/settings', function(req, res) {
 
-    let weight = req.body.weight;
-    let height = req.body.height;
-    let age = req.body.age;
+    let weight = +req.body.weight;
+    let height = +req.body.height;
+    let age = +req.body.age;
+
+    console.log(weight);
+    console.log(height);
+    console.log(age);
 
     let kkal = 10 * weight + 6.25 * height - 4.92 * age - 161;
 

@@ -63,7 +63,7 @@ export class Addrecipe {
       shortDescription:  this.Description,
       fullDescription: this.Recipe || "",
       imageUrl: this.UrlPhoto || "",
-      constituents: [ this.Proteins, this.Carbohydrates, this.Fats, this.Calories ],
+      kkal: +this.Proteins || 0,
       exceptions: this.getExceptions(),
       foodIntake: this.foodIntake || ""
     }

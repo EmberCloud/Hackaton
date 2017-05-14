@@ -16,7 +16,7 @@ export class AuthPage {
 
   username: String = "";
   password: String = "";
-
+  authModel: string="LogIn";
 
   constructor(public navCtrl: NavController, private authService: AuthService) {
   

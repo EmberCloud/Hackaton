@@ -14,19 +14,20 @@ import {DishesListService} from '../../app/services/disheslist.service';
 
 
 export class Fullrecipe implements OnInit{
-  // fullrecipe = {
-  //   imageUrl: "http://localhost:3000/photo/brain.jpg"
-  // };
+
   fullrecipe = {
-    name: "Name"
+    name: "",
+    shortDescription: "",
+    fullDescription: "",
+    kkal: 0,
+    foodIntake: "",
+    rating: 0        
   };
-  id;
-  loading:any;
+  id = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fullrecipeService: FullRecipeService, private disheslistService: DishesListService,
   public params: NavParams) {
     this.id = params.get("id");
-    this.getfullrecipe();
   }
   
 
@@ -35,6 +36,7 @@ export class Fullrecipe implements OnInit{
       .subscribe(
         data => {
           console.log(data);
+          this.fullrecipe = data;
           //if(!this.fullrecipe['imageUrl']) this.fullrecipe['imageUrl'] = 'http://localhost:3000/photo/brain.jpg';
         },
         err => console.log(err),
@@ -50,8 +52,12 @@ export class Fullrecipe implements OnInit{
   }
 
   ionViewWillEnter(): void {
-
+    
   }
+
+  likeDish() {}
+
+  unlikeDish() {}
 
 
 }

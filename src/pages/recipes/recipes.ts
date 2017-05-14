@@ -4,7 +4,7 @@ import {Addrecipe} from "../addrecipe/addrecipe";
 import {DishesListService} from '../../app/services/disheslist.service';
 import {Fullrecipe} from "../fullrecipe/fullrecipe";
 
-import { SharedService } from '../../app/services/sharedService.service';
+
 
 
 @Component({
@@ -16,8 +16,10 @@ export class RecipesPage implements OnInit {
   search: String = "";
 
   recipes = [];
-  foodInTake: String = "";
-  period: String = "";
+  foodInTake: String = "All";
+  period: String = "All";
+
+  recipeModel: String = "All";
 
   types = [
     {value: "All"},
@@ -28,7 +30,8 @@ export class RecipesPage implements OnInit {
   ];
 
   constructor(public navCtrl: NavController, private disheslistService: DishesListService) {
-
+  this.foodInTake = "All";
+  this.period = "All";
   }
 
   ngOnInit(): void {
@@ -48,7 +51,7 @@ export class RecipesPage implements OnInit {
       .subscribe(
         data => {
           //this.recipes = JSON.parse(data);
-          this.recipes = data.msg;
+          this.recipes = data;
           console.log("data");
           console.log(data);
         },
@@ -60,23 +63,23 @@ export class RecipesPage implements OnInit {
 
   OnChanges(value)
   {
-    this.period = value;
+    this.period = this.recipeModel;
     this.getdisheslist(this.foodInTake, this.period);
-    console.log(this.recipes);
+    //console.log(this.recipes);
   }
 
   onChange(value)
   {
     this.foodInTake = value;
     this.getdisheslist(this.foodInTake, this.period);
-    console.log(this.recipes);
+    //console.log(this.recipes);
   }
 
-  likeDish(): void {
+  likeDish(id): void {
     console.log("+");
   }
 
-  dislikeDish(): void {
+  inlikeDish(id): void {
     console.log("-");
   }
 

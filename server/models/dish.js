@@ -19,8 +19,7 @@ let DishSchema = new Schema({
         type: String,
     },
     kkal: {
-        type: Number,
-        required: true
+        type: Number
     },
     exceptions: {
         type: Array

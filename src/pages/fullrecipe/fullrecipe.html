@@ -7,20 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>fullrecipe</ion-title>
+    <ion-title>{{fullrecipe.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
-<div class="card">
-  <!--<img src="{{fullrecipe.imageUrl}}" class="recipe-img" *ngIf="fullrecipe.imageUrl">-->
-  <h6 class="title">{{fullrecipe.name}}</h6>
-</div>
-    <!--<div class="card">
-      <p *ngFor="let recipe of fullrecipe"> {{recipe.constituents}}</p>
-    </div>
-    <div class="card"> <p *ngFor="let recipe of recipes"> {{recipe.fullDescription}}</p>
-    </div>-->
+
+  
 
 <ion-content padding>
+  <div class="card">
+    <img src="{{fullrecipe.imageUrl}}" class="recipe-img" *ngIf="fullrecipe.imageUrl">
+    <h6 class="title">{{fullrecipe.name}}</h6>
+    <p> {{fullrecipe.fullDescription}}</p>
+    <p>{{fullrecipe.kkal}}</p>
+    <p>{{fullrecipe.foodIntake}}</p>
+    <p>Rating: {{fullrecipe.rating}}</p>
 
+    <ion-row>
+    <ion-col col-6>
+    </ion-col>
+      <ion-col col-3>
+        <button ion-fab color="primary" (click)="likeDish(recipe._id)">
+          <ion-icon name="arrow-dropup"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-fab color="primary" (click)="unlikeDish(recipe._id)">
+          <ion-icon name="arrow-dropdown"></ion-icon>
+        </button>
+      </ion-col>
+  </ion-row>
+  </div>
+  
 </ion-content>
