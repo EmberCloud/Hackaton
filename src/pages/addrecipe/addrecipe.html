@@ -27,14 +27,15 @@
       <ion-label floating>Url photo</ion-label>
       <ion-input type="text" [(ngModel)]="UrlPhoto"></ion-input>
     </ion-item>
-  </div>
 
-  <button ion-button icon-only class="resize">
+    <button ion-button icon-only class="resize">
         <ion-icon name="funnel" class="button_id"></ion-icon>
         <ion-select [(ngModel)]="typesHeader" #C (ion-change)="onChange(C.value)">
           <ion-option *ngFor="let type of types" value="{{type.value}}">{{type.value}}</ion-option>
         </ion-select>
   </button>
+  </div>
+
   
   <div class="card">
     <h6>Nutrients</h6>

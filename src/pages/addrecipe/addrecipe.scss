@@ -21,10 +21,18 @@ button.has-margin
   background-color:#f7f6f6 ;
 }
 
-button.resize
+.resize {
+  height: 20px;
+}
+
+button {
+  height: 20px;
+}
+
+  button.resize
 {
-  width: 40%;
-  height: 10px;
-  margin-left: 30%;
+  width: 10%;
+  height: 30%;
+  margin-left: 40px;
   margin-top: 10px;
 }
